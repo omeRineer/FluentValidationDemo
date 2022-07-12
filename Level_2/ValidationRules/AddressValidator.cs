@@ -13,12 +13,14 @@ namespace Level_2.ValidationRules
         public AddressValidator()
         {
             RuleFor(x => x.Street)
-                .NotEmpty().WithMessage("Bu alan boş geçilemez")
-                .MaximumLength(100);
+                .NotEmpty().WithMessage("{PropertyName} alanı boş geçilemez")
+                .MaximumLength(100)
+                .WithName("Sokak");
 
             RuleFor(x => x.City)
-                .NotEmpty().WithMessage("Bu alan boş geçilemez")
-                .Length(2, 13).WithMessage("Şehir ismi 2-13 karakter uzunluğunda olmalı");
+                .NotEmpty().WithMessage("{PropertyName} boş geçilemez")
+                .Length(2, 13).WithMessage("{PropertyName} alanı {MinLength}-{MaxLength} karakter uzunluğunda olmalı")
+                .WithName("Şehir");
         }
     }
 }

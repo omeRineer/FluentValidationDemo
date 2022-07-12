@@ -13,16 +13,19 @@ namespace Level_2.ValidationRules
         public CustomerValidator()
         {
             RuleFor(x => x.Name)
-                .NotEmpty().WithMessage("Bu alan boş geçilemez")
-                .Length(3,15).WithMessage("İsminiz 3-15 karakter uzunluğunda olmalı");
+                .NotEmpty().WithMessage("{PropertyName} alanı boş geçilemez")
+                .Length(3,15).WithMessage("{PropertyName} alanı {MinLength}-{MaxLength} karakter uzunluğunda olmalı")
+                .WithName("İsim");
 
             RuleFor(x => x.Surname)
-                .NotEmpty().WithMessage("Bu alan boş geçilemez")
-                .Length(2, 15).WithMessage("Soyisminiz 2-15 karakter uzunluğunda olmalı");
+                .NotEmpty().WithMessage("{PropertyName} alanı boş geçilemez")
+                .Length(2, 15).WithMessage("{PropertyName} alanı {MinLength}-{MaxLength} karakter uzunluğunda olmalı")
+                .WithName("Soyadı");
 
             RuleFor(x => x.NationalityId)
-                .NotEmpty().WithMessage("Bu alan boş geçilemez")
-                .Length(11, 11).WithMessage("Kimlik numaranız 11 karakter uzunluğunda olmalı");
+                .NotEmpty().WithMessage("{PropertyName} alanı boş geçilemez")
+                .Length(11, 11).WithMessage("{PropertyName} alanı {MinLength} karakter uzunluğunda olmalı")
+                .WithName("Kimlik no");
 
             RuleFor(x => x.Address).SetValidator(new AddressValidator());
 
